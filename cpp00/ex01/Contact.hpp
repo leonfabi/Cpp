@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:57:35 by fkrug             #+#    #+#             */
-/*   Updated: 2023/10/17 14:17:14 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/12/11 13:48:04 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ class Contact {
 	public:
 		Contact();
 		~Contact();
-		Contact(Contact &old);
+		void addInfo(void);
+		void printInfo (void) const;
+		std::string getfirstname(void) const;
+		std::string getlastname(void) const;
+		std::string getnickname(void) const;
 	private:
-		std::string firstname;
-		std::string lastname;
-		std::string nickname;
-		std::string phonenumber;
-		std::string darkestsecret;
+		std::string _firstname;
+		std::string _lastname;
+		std::string _nickname;
+		std::string _phonenumber;
+		std::string _darkestsecret;
+		std::string _getString(std::string text);
 };
 
 #endif
