@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:11:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 14:37:14 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/12/11 14:42:54 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	Contact::addInfo(void)
 std::string	Contact::_getString(std::string text)
 {
 	std::string str;
-	std::cout << text;
-	std::getline(std::cin, str);
+	do {
+		std::cout << text;
+		std::getline(std::cin, str);
+		if (str.empty())
+			std::cout << "Field cannot be empty" << std::endl;
+	} while (str.empty());
 	return str;
 }
 
