@@ -2,12 +2,10 @@
 
 PhoneBook::PhoneBook(void)
 {
-	std::cout << "New PhoneBook generated" << std::endl;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Phonebook got deleted" << std::endl;
 }
 
 void PhoneBook::addContact(void)

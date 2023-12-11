@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:11:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 14:30:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/12/11 14:37:14 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 Contact::Contact(void)
 {
-	std::cout << "New Contact created" << std::endl;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Contact is being deleted" << std::endl;
 }
 
 void	Contact::addInfo(void)
