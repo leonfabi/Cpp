@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 15:07:48 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 15:07:49 by fkrug            ###   ########.fr       */
+/*   Created: 2023/12/11 15:07:59 by fkrug             #+#    #+#             */
+/*   Updated: 2023/12/11 15:22:15 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Account.hpp"
 
-int	main(int argc, char* argv[])
+Account::Account(void)
 {
-	int	count = 0;
-	std::string str;
+}
 
-	if (argc <= 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else
-	{
-		while (++count < argc)
-		{
-			str = argv[count];
-			for (size_t i = 0; i < str.length(); i++)
-				str[i] = std::toupper(str[i]);
-			std::cout << str;
-		}
-		std::cout << std::endl;
-	}
-	return (0);
+Account::~Account(void)
+{
+}
+
+int Account::getNbAccounts(void)
+{
+	return _nbAccounts;
+}
+int Account::getNbDeposits(void)
+{
+	return _totalNbDeposits;
+}
+int Account::getNbWithdrawals(void)
+{
+	return _totalNbWithdrawals;
+}
+int Account::getTotalAmount(void)
+{
+	return _totalAmount;
+}
+void Account::displayAccountsInfos(void)
+{
+	
 }

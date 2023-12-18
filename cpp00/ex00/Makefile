@@ -1,17 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/11 15:07:45 by fkrug             #+#    #+#              #
+#    Updated: 2023/12/11 15:07:46 by fkrug            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = megaphone
 
-CXX = c++
-CXXFLAGS =-std=c++98 -Wall -Wextra -Werror 
+CPP = c++
+CPPFLAGS =-std=c++98 -Wall -Wextra -Werror 
 SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
