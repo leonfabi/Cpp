@@ -1,8 +1,10 @@
-NAME = phonebook
+NAME = account
 
 CXX = c++
-CXXFLAGS =-std=c++98 -Wall -Wextra -Werror 
-SRC = test.cpp Account.cpp
+CXXFLAGS =-std=c++98
+#-Wall -Wextra 
+#-Werror 
+SRC = tests.cpp Account.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

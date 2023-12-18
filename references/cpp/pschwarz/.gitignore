@@ -1,0 +1,7 @@
+.ccls-cache/
+**a.out
+**megaphone
+**phonebook
+*.o
+*.gch
+**tests
