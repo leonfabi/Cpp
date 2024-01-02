@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:48:01 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/02 13:53:39 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/02 14:28:20 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Weapon::Weapon(std::string str) : type(str){
 Weapon::~Weapon(){
 }
 
-const std::string& Weapon::getType(void){
+const std::string& Weapon::getType(void)const{
 	return (type);
 }
 
-void Weapon::setType(std::string str){
+void Weapon::setType(const std::string str){
 	type = str;
 }

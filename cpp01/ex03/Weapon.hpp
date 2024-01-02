@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:42:25 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/02 13:53:43 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/02 14:28:26 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class	Weapon{
 	public:
 		Weapon(std::string str);
 		~Weapon();
-		const std::string& getType(void);
-		void setType(std::string str);
+		const std::string& getType(void) const;
+		void setType(const std::string str);
 };
 
 #endif
