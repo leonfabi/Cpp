@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:41:58 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 16:00:54 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/02 11:43:55 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Zombie{
 		Zombie();
 		~Zombie();
 		Zombie(std::string str);
-		void	announce(void);
+		void	announce(void) const;
 };
 
 Zombie*	newZombie(std::string name);

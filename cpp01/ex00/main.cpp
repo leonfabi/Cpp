@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:58:14 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 16:07:46 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/02 11:44:28 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(void)
 {
-	Zombie *z = newZombie("Fabian");
-	randomChump("Fabileo");
+	Zombie *z = newZombie("First");
+	randomChump("Second");
 	z->announce();
 	delete z;
 	return (0);
