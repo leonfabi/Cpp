@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:07:48 by fkrug             #+#    #+#             */
-/*   Updated: 2023/12/11 15:07:49 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/02 10:57:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char* argv[])
 		while (++count < argc)
 		{
 			str = argv[count];
-			for (size_t i = 0; i < str.length(); i++)
+			for (std::string::size_type i = 0; i < str.length(); i++)
 				str[i] = std::toupper(str[i]);
 			std::cout << str;
 		}
