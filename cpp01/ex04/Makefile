@@ -6,15 +6,15 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/01/02 14:24:52 by fkrug            ###   ########.fr        #
+#    Updated: 2024/01/02 14:42:18 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = violence
+NAME = copy
 
 CXX = c++
 CXXFLAGS =-std=c++98 -Wall -Wextra -Werror 
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
