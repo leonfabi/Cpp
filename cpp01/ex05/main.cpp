@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 10:20:02 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/03 12:58:32 by fkrug            ###   ########.fr       */
+/*   Created: 2024/01/03 13:21:19 by fkrug             #+#    #+#             */
+/*   Updated: 2024/01/03 13:22:30 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-#define HARL_HPP
-#include <string>
+#include "Harl.hpp"
 
-class Harl{
-	private:
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
-	public:
-		Harl();
-		~Harl();
-		void complain(std::string level);
-};
+int main(void){
+	Harl	h;
 
-typedef void (Harl::*HarlMemFn)(void);
-
-#endif
+	h.complain("debug");
+	h.complain("info");
+	h.complain("warning");
+	h.complain("error");
+	h.complain("something");
+	return (0);
+}
