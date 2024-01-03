@@ -6,12 +6,11 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:13:43 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/02 14:30:58 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/03 13:40:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
-#include <iostream>
 
 HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {

@@ -6,12 +6,11 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:06:40 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/02 14:23:20 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/03 13:40:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
-#include <iostream>
 
 HumanA::HumanA(std::string str, Weapon& weapon) : _name(str), _weapon(weapon)
 {
