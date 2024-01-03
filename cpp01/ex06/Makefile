@@ -6,11 +6,11 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/01/03 13:22:52 by fkrug            ###   ########.fr        #
+#    Updated: 2024/01/03 14:43:10 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = harlFilter
 
 CXX = c++
 CXXFLAGS =-std=c++98 -Wall -Wextra -Werror 
