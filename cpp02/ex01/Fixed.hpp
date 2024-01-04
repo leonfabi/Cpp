@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:12:28 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/04 14:24:31 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/04 14:59:18 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ class Fixed{
 		float toFloat(void) const;
 		int toInt(void) const;
 };
+
+std::ostream& operator<<(std::ostream &out, const Fixed &obj);
 
 #endif
