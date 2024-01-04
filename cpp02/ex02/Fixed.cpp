@@ -6,14 +6,14 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:57:05 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/04 16:12:10 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/04 16:37:32 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed(): _fp_value(0){}
-
+// Fixed::Fixed(const Fixed &old_obj) : _fp_value(old_obj._fp_value) {}
 Fixed::Fixed(const Fixed &old_obj){	*this = old_obj;}
 
 Fixed::Fixed(const int integer): _fp_value(integer << _fract_bits){}
@@ -28,42 +28,17 @@ Fixed& Fixed::operator=(const Fixed &right){
 	return (*this);
 }
 
-bool Fixed::operator<(const Fixed &right){	return (this->_fp_value < right._fp_value);}
-bool Fixed::operator>(const Fixed &right){	return (this->_fp_value > right._fp_value);
-}
-bool Fixed::operator<=(const Fixed &right){
-	return (this->_fp_value <= right._fp_value);
-}
-bool Fixed::operator>=(const Fixed &right){
-	return (this->_fp_value >= right._fp_value);
-}
-bool Fixed::operator==(const Fixed &right){
-	return (this->_fp_value == right._fp_value);
-}
-bool Fixed::operator!=(const Fixed &right){
-	return (this->_fp_value != right._fp_value);
-}
+bool Fixed::operator<(const Fixed &right) const {	return (_fp_value < right._fp_value); }
+bool Fixed::operator>(const Fixed &right) const {	return (right < *this); }
+bool Fixed::operator<=(const Fixed &right) const {	return (!(*this > right)); }
+bool Fixed::operator>=(const Fixed &right) const {	return (!(*this < right)); }
+bool Fixed::operator==(const Fixed &right) const {	return (_fp_value == right._fp_value); }
+bool Fixed::operator!=(const Fixed &right) const {	return (!(*this == right)); }
 
-Fixed Fixed::operator+(const Fixed &right){
-	Fixed	res;
-	res._fp_value = this->_fp_value + right._fp_value;
-	return (res);
-}
-Fixed Fixed::operator-(const Fixed &right){
-	Fixed	res;
-	res._fp_value = this->_fp_value - right._fp_value;
-	return (res);
-}
-Fixed Fixed::operator*(const Fixed &right){
-	Fixed	res;
-	res._fp_value = this->_fp_value * right._fp_value;
-	return (res);
-}
-Fixed Fixed::operator/(const Fixed &right){
-	Fixed	res;
-	res._fp_value = this->_fp_value / right._fp_value;
-	return (res);
-}
+Fixed Fixed::operator+(const Fixed &right){	return (Fixed(toFloat() + right.toFloat())); }
+Fixed Fixed::operator-(const Fixed &right){	return (Fixed(toFloat() - right.toFloat())); }
+Fixed Fixed::operator*(const Fixed &right){	return (Fixed(toFloat() * right.toFloat())); }
+Fixed Fixed::operator/(const Fixed &right){	return (Fixed(toFloat() / right.toFloat())); }
 
 std::ostream& operator<<(std::ostream &out, const Fixed &obj){
 	out << obj.toFloat();
