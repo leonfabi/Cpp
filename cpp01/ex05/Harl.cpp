@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:48:34 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/03 13:38:53 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/05 10:32:16 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ Harl::~Harl(){
 }
 
 void Harl::debug(void){
-	std::cout << DEBUG << std::endl;
+	std::cout << "[DEBUG]\n" << DEBUG << std::endl;
 }
 
 void Harl::info(void){
-	std::cout << INFO << std::endl;
+	std::cout << "[INFO]\n" << INFO << std::endl;
 }
 
 void Harl::warning(void){
-	std::cout << WARNING << std::endl;
+	std::cout << "[WARNING]\n" << WARNING << std::endl;
 }
 
 void Harl::error(void){
-	std::cout << ERROR << std::endl;
+	std::cout << "[ERROR]\n" << ERROR << std::endl;
 }
 
 void Harl::complain(std::string level){
