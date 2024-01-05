@@ -6,15 +6,14 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/01/04 14:03:13 by fkrug            ###   ########.fr        #
+#    Updated: 2024/01/05 13:54:06 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fixed
 
 CXX = c++
-CXXFLAGS =
-# -std=c++98 -Wall -Wextra -Werror 
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
 
