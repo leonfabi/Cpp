@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:12:28 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/04 16:20:55 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/05 14:42:37 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class Fixed{
 		Fixed(const float floating_point);
 
 		Fixed& operator=(const Fixed &right);
+		Fixed& operator++(void);
+		Fixed& operator--(void);
+		Fixed operator++(int);
+		Fixed operator--(int);
 		Fixed operator+(const Fixed &right);
 		Fixed operator-(const Fixed &right);
 		Fixed operator*(const Fixed &right);

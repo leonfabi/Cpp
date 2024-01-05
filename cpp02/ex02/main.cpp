@@ -5,26 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 14:02:15 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/04 15:02:39 by fkrug            ###   ########.fr       */
+/*   Created: 2024/01/05 14:23:18 by fkrug             #+#    #+#             */
+/*   Updated: 2024/01/05 14:52:12 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "Fixed.hpp"
 
 int main( void ) {
-	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	a = Fixed( 1234.4321f );
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	Fixed a(5.05f);
+	Fixed b(2);
+	Fixed c;
+
+	std::cout << "a is " << a << '\n';
+	std::cout << "b is " << b << '\n';
+
+	// Test comparison operators
+	std::cout << "a > b: " << (a > b) << '\n';
+	std::cout << "a < b: " << (a < b) << '\n';
+	std::cout << "a >= b: " << (a >= b) << '\n';
+	std::cout << "a <= b: " << (a <= b) << '\n';
+	std::cout << "a == b: " << (a == b) << '\n';
+	std::cout << "a != b: " << (a != b) << '\n';
+
+	// Test arithmetic operators
+	c = a + b;
+	std::cout << "a + b: " << c << '\n';
+
+	c = a - b;
+	std::cout << "a - b: " << c << '\n';
+
+	c = a * b;
+	std::cout << "a * b: " << c << '\n';
+
+	c = a / b;
+	std::cout << "a / b: " << c << '\n';
+
+	
+	// Test increment/decrement
+	std::cout << "b++: " << b++ << '\n';
+	std::cout << "b: " << b << '\n';
+	std::cout << "++b: " << ++b << '\n';
+	std::cout << "b: " << b << '\n';
+	std::cout << "b--: " << b-- << '\n';
+	std::cout << "b: " << b << '\n';
+	std::cout << "--b: " << --b << '\n';
+
+	// // Test max and min
+	// std::cout << "Max(a, b): " << Fixed::max(a, b) << '\n';
+	// std::cout << "Min(a, b): " << Fixed::min(a, b) << '\n';
+
 	return 0;
 }
