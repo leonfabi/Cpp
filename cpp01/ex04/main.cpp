@@ -6,13 +6,28 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:32:39 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/05 10:15:03 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/05 10:26:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
 #include <iostream>
+
+static void replace(std::string& line, std::string& str_find, std::string& str_replace, std::string::size_type length)
+{
+	std::size_t	index = 0;
+	while ((index = line.find(str_find, index)) != std::string::npos){
+		if ((index != 0 && line[index - 1] != ' ') || 
+		(index + length < line.length() && line[index + length] != ' ')){
+			index += length;
+			continue;
+		}
+		line.erase(index, length);
+		line.insert(index, str_replace);
+		index += length;
+	}
+}
 
 int	main(int argc, char *argv[])
 {
@@ -26,9 +41,8 @@ int	main(int argc, char *argv[])
 	}
 	std::string	line, filename = argv[1], str_find(argv[2]), str_replace(argv[3]);
 	std::string::size_type	l(str_find.length());
-	std::size_t	index;
 	std::ifstream	in_file(filename);
-	std::ofstream	out_file;//(filename + ".replace");
+	std::ofstream	out_file;
 	if (!in_file.is_open())
 	{
 		std::cerr << "Error: input file couldn't be opened" << std::endl;
@@ -42,17 +56,7 @@ int	main(int argc, char *argv[])
 	}
 	while (std::getline(in_file,line))
 	{
-		index = 0;
-		while ((index = line.find(str_find, index)) != std::string::npos){
-			if ((index != 0 && line[index - 1] != ' ') || 
-			(index + l < line.length() && line[index + l] != ' ')){
-				index += l;
-				continue;
-			}
-			line.erase(index, l);
-			line.insert(index, str_replace);
-			index += l;
-		}
+		replace(line, str_find, str_replace, l);
 		out_file << line << std::endl;
 	}
 	out_file.close();
