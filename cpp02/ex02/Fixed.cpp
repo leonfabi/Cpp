@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:57:05 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/05 14:45:11 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/05 15:15:19 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,37 @@ Fixed Fixed::operator--(int){
 	return (old);
 }
 
+Fixed& Fixed::max(Fixed& a, Fixed& b){
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b){
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed&  b){
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed&  b){
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+
 std::ostream& operator<<(std::ostream &out, const Fixed &obj){
 	out << obj.toFloat();
 	return (out);
 }
+
 
 int Fixed::getRawBits(void) const{
 	std::cout << "getRawBits member function called\n";
