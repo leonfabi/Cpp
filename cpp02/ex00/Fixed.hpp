@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:12:28 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/04 14:19:50 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/19 16:20:13 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Fixed{
 		Fixed(const Fixed &old_obj);
 		Fixed& operator=(const Fixed &right);
 		int getRawBits(void) const;
-		void setRawBits(int const raw);
+		void setRawBits(const int raw);
 };
 
 #endif

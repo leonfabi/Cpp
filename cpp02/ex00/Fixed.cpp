@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:57:05 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/05 13:56:47 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/19 16:20:23 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int Fixed::getRawBits(void) const{
 	return (_fp_value);
 }
 
-void Fixed::setRawBits(int const raw) {
+void Fixed::setRawBits(const int raw) {
 	std::cout << "setRawBits member function called\n";
 	_fp_value = raw;
 }
