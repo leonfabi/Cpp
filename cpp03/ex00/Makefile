@@ -6,16 +6,15 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/01/04 14:03:13 by fkrug            ###   ########.fr        #
+#    Updated: 2024/01/22 11:49:21 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = claptrap
 
 CXX = c++
-CXXFLAGS =
-# -std=c++98 -Wall -Wextra -Werror 
-SRC = main.cpp Fixed.cpp
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
+SRC = main.cpp ClapTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
