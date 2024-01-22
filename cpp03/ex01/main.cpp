@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:45:09 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:44:26 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 15:31:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ int	main(void)
 {
 	{
 	ScavTrap	one("one");
-	ScavTrap	two;
+	ScavTrap	two(one);
 
-	two = one;
+	one.print();
+	two.print();
+	// two = one;
+	// two.print();
 	}
 	{
 	ScavTrap	one("Fabian");

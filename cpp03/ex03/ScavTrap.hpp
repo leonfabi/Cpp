@@ -6,13 +6,13 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:08:55 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:17:59 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 15:18:32 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap{
+class ScavTrap: public virtual ClapTrap{
 	public:
 		ScavTrap(std::string name);
 		ScavTrap();

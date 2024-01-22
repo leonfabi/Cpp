@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:18:56 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:38:50 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 15:42:51 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ ScavTrap::~ScavTrap(){
 
 ScavTrap::ScavTrap(const ScavTrap &old_obj) : ClapTrap(old_obj){
 	std::cout << "ScavTrap Copy constructor called\n";
+	*this = old_obj;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &old_obj){

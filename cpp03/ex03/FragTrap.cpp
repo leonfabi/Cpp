@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:18:56 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:54:20 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 15:41:47 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ FragTrap::~FragTrap(){
 
 FragTrap::FragTrap(const FragTrap &old_obj) : ClapTrap(old_obj){
 	std::cout << "FragTrap Copy constructor called\n";
+	*this = old_obj;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &old_obj){
