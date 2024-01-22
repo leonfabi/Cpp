@@ -6,14 +6,14 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:10:10 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 15:06:28 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 15:48:38 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public virtual FragTrap, public virtual ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
 	private:
 		std::string	_name;
 	public:
