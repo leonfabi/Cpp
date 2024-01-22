@@ -6,10 +6,12 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:08:55 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 15:18:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:24:53 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 #include "ClapTrap.hpp"
 
 class FragTrap: public virtual ClapTrap{
@@ -21,3 +23,4 @@ class FragTrap: public virtual ClapTrap{
 		FragTrap& operator=(const FragTrap &old_obj);
 		void highFivesGuys(void) const;
 };
+#endif

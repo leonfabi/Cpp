@@ -6,10 +6,12 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:10:10 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 15:48:38 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:25:22 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
@@ -25,3 +27,4 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		void attack(const std::string& target);
 		void whoAmI(void) const;
 };
+#endif

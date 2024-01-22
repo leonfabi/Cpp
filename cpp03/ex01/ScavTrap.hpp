@@ -6,10 +6,12 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:08:55 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:17:59 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:22:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 #include "ClapTrap.hpp"
 
 class ScavTrap: public ClapTrap{
@@ -22,3 +24,4 @@ class ScavTrap: public ClapTrap{
 		void attack(const std::string& target);
 		void guardGate(void) const;
 };
+#endif
