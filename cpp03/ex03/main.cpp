@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:45:09 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 15:32:14 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:10:02 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,10 @@
 
 int	main(void)
 {
-	{
 	DiamondTrap	one("Fabian");
 	DiamondTrap	two(one);
 
 	two.whoAmI();
-	// two = one;
-	// two.whoAmI();
-	// one.print();
-	// one.attack("two");
-	// one.takeDamage(20);
-	// one.beRepaired(5);
-	// one.print();
-	// one.guardGate();
-	// one.highFivesGuys();
-	// one.whoAmI();
-	}
+	one.guardGate();
+	one.highFivesGuys();
 }

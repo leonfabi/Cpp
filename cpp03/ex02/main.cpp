@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:45:09 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:54:57 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:05:54 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,12 @@
 
 int	main(void)
 {
-	{
-	FragTrap	one("one");
-	FragTrap	two;
-
-	two = one;
-	}
-	{
 	FragTrap	one("Fabian");
 
 	one.print();
-	one.attack("two");
+	one.attack("test");
 	one.takeDamage(20);
 	one.beRepaired(5);
 	one.print();
 	one.highFivesGuys();
-	}
 }
