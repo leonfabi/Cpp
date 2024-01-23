@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:42:22 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 12:42:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/23 15:54:06 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void ClapTrap::attack(const std::string& target){
 	std::cout << "ClapTrap Attack function\n";
 	if (!_energy_p){
 		std::cout << "ClapTrap " << _name << " has no energy points left\n";
+		return ;
+	}else if (!_hit_p){
+		std::cout << "ClapTrap " << _name << " has no hit points left\n";
 		return ;
 	}else{
 		_energy_p--;

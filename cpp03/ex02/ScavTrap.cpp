@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:18:56 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 15:42:51 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/23 15:53:51 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void ScavTrap::attack(const std::string& target){
 	std::cout << "ScavTrap Attack function\n";
 	if (!_energy_p){
 		std::cout << "ScavTrap " << _name << " has no energy points left\n";
+		return ;
+	}else if (!_hit_p){
+		std::cout << "ScavTrap " << _name << " has no hit points left\n";
 		return ;
 	}else{
 		_energy_p--;
