@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:08:55 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 19:24:32 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:49:16 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define SCAVTRAP_HPP
 #include "ClapTrap.hpp"
 
-class ScavTrap: public virtual ClapTrap{
+class ScavTrap: virtual public ClapTrap{
 	public:
 		ScavTrap(std::string name);
 		ScavTrap();
