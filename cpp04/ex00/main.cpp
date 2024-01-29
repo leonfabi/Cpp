@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:09:17 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/29 14:29:06 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:12:27 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ int main()
 
     const WrongAnimal* wrong_meta = new WrongAnimal();
     const WrongAnimal* wrong_i = new WrongCat();
+    WrongCat           wrong_cat;
     std::cout << wrong_i->getType() << " " << std::endl;
     wrong_i->makeSound();
     wrong_meta->makeSound();
+    wrong_cat.makeSound();
     delete wrong_meta;
     delete wrong_i;
     return 0;
