@@ -16,11 +16,11 @@
 #include "WrongAnimal.hpp"
 
 class WrongCat: public WrongAnimal{
-	public:
-		WrongCat();
-		~WrongCat();
-		WrongCat(const WrongCat &old_obj);
-		WrongCat& operator=(const WrongCat &old_obj);
-		virtual void makeSound(void) const;
+    public:
+        WrongCat();
+        ~WrongCat();
+        WrongCat(const WrongCat &old_obj);
+        WrongCat& operator=(const WrongCat &old_obj);
+        virtual void makeSound(void) const;
 };
 #endif
