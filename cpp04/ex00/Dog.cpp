@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:08:27 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 19:12:09 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/29 12:40:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Dog::Dog():Animal(){
 	std::cout << "Dog default constructor called\n";
+	type = "Dog";
 }
 
 Dog::~Dog(){

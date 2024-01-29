@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:12:50 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/22 19:13:07 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/29 12:41:12 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Cat::Cat():Animal(){
 	std::cout << "Cat default constructor called\n";
+	type = "Cat";
 }
 
 Cat::~Cat(){

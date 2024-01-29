@@ -14,6 +14,7 @@
 
 WrongCat::WrongCat():WrongAnimal(){
 	std::cout << "WrongCat default constructor called\n";
+	type = "WrongCat";
 }
 
 WrongCat::~WrongCat(){
