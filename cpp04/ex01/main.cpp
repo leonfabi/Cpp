@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:09:17 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/29 16:09:21 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:20:17 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ void animal_array(void){
 
 void brain_test(void){
     Cat Mieze;
-    Cat Tiger;
+    Cat Tiger = Mieze;
     Mieze.add_idea("I am so hungry");
     Mieze.add_idea("I want to eat a mouse");
     Mieze.print_brain();
     Tiger = Mieze;
-    Tiger.print_brain();
     Tiger.add_idea("I'd rather fancy an Antilope");
     Mieze.add_idea("Or maybe I want to drink some nice warm milk");
     Tiger.print_brain();
@@ -42,9 +41,15 @@ void brain_test(void){
     Lion.print_brain();
 }
 
+void destructor_test(void){
+    Animal* test = new Cat();
+    delete test;
+}
+
 int main()
 {
     animal_array();
     brain_test();
+    destructor_test();
     return 0;
 }
