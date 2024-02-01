@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:20:00 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/01 20:30:33 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/01 21:16:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 class Character: public ICharacter{
     private:
         static const int size = 4;
-        int         _t_idx;
         std::string _name;
+        int         _t_idx;
         AMateria* _inventory[size];
         AMateria* _trash[size];
     public:

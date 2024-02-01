@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:04:18 by fkrug             #+#    #+#             */
-/*   Updated: 2024/01/30 18:34:20 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/01 21:54:16 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ Ice::~Ice(){
     std::cout << "Ice destructor called\n";
 }
 
-Ice::Ice(const Ice &old_obj){
-    *this = old_obj;
+Ice::Ice(const Ice &old_obj):AMateria(old_obj){
 }
 
 Ice& Ice::operator=(const Ice &old_obj){

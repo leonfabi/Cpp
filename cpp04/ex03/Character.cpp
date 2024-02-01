@@ -6,30 +6,30 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:20:27 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/01 20:44:58 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/01 21:19:47 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character(): _name("default"){
+Character::Character(): _name("default"), _t_idx(0){
     std::cout << "Character default constructor called\n";
-    for (size_t i = 0; i < size; i++){
+    for (int i = 0; i < size; i++){
         _inventory[i] = NULL;
         _trash[i] = NULL;
     }
 }
 
-Character::Character(std::string const & name): _name(name){
+Character::Character(std::string const & name): _name(name), _t_idx(0){
     std::cout << "Character constructor called: " << name << " \n";
-    for (size_t i = 0; i < size; i++){
+    for (int i = 0; i < size; i++){
         _inventory[i] = NULL;
         _trash[i] = NULL;
     }
 }
 
 Character::~Character(){
-    for (size_t i = 0; i < size; i++){
+    for (int i = 0; i < size; i++){
         if (_inventory[i] != NULL)
             delete _inventory[i];
         if (_trash[i] != NULL)
@@ -45,7 +45,7 @@ Character::Character(const Character &old_obj){
 Character& Character::operator=(const Character &old_obj){
     if (this!=&old_obj){
         _name = old_obj._name;
-        for (size_t i = 0; i < size; i++){
+        for (int i = 0; i < size; i++){
             if (_inventory[i] != NULL){
                 delete _inventory[i];
                 _inventory[i] = NULL;
@@ -77,7 +77,7 @@ void Character::use(int idx, ICharacter& target){
 }
 
 void Character::equip(AMateria* m){
-    for (size_t i = 0; i < size; i++){
+    for (int i = 0; i < size; i++){
         if (!_inventory[i]){
             _inventory[i] = m;
             return ;
@@ -96,7 +96,7 @@ void Character::unequip(int idx){
         return ;
     }
     if (_t_idx == 4)
-        _t_idx == 0;
+        _t_idx = 0;
     if (_trash[_t_idx] != NULL)
         delete _trash[_t_idx];
     _trash[_t_idx] = _inventory[idx];
