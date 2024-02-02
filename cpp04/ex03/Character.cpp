@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:20:27 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/01 21:19:47 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:03:45 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,18 @@ Character::~Character(){
 }
 
 Character::Character(const Character &old_obj){
+    for (int i = 0; i < size; i++)
+    {
+        _inventory[i] = NULL;
+        _trash[i] = NULL;
+    }
     *this = old_obj;
 }
 
 Character& Character::operator=(const Character &old_obj){
     if (this!=&old_obj){
         _name = old_obj._name;
+        _t_idx = old_obj._t_idx;
         for (int i = 0; i < size; i++){
             if (_inventory[i] != NULL){
                 delete _inventory[i];

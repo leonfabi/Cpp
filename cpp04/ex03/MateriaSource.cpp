@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:54:33 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/01 21:56:23 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:06:21 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ MateriaSource::MateriaSource(){
     {
         _source[i] = NULL;
     }
-    
 }
 
 MateriaSource::~MateriaSource(){
     std::cout << "MateriaSource destructor called\n";
     for (int i = 0; i < 4; i++)
     {
-        delete _source[i];
+        if (_source[i] != NULL)
+            delete _source[i];
     }
 }
 
 MateriaSource::MateriaSource(const MateriaSource &old_obj){
+    for (int i = 0; i < 4; i++){
+        _source[i] = NULL;
+    }
     *this = old_obj;
 }
 
