@@ -25,7 +25,7 @@ class AForm{
     public:
         AForm();
         AForm(const std::string name, const int sign_grade, const int exec_grade, const std::string target);
-        ~AForm();
+        virtual ~AForm();
         AForm(const AForm &old_obj);
         AForm& operator=(const AForm &old_obj);
 
