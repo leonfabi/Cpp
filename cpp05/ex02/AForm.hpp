@@ -34,12 +34,21 @@ class AForm{
         const std::string getName(void) const;
         const std::string getTarget(void) const;
         bool getSign(void) const;
-        virtual void beSigned(const Bureaucrat& b) = 0;
+        bool isExecutable(Bureaucrat const & executor) const;
+        virtual void beSigned(const Bureaucrat& b);
+        virtual void execute(Bureaucrat const &executor) const = 0;
 
         class GradeTooHighException: public std::exception{
             const char* what(void) const throw();
         };
         class GradeTooLowException: public std::exception{
+            const char* what(void) const throw();
+        };
+        class FormNotSignedException: public std::exception{
+            const char* what(void) const throw();
+        };
+
+        class ExecutionNotAllowed: public std::exception{
             const char* what(void) const throw();
         };
 };

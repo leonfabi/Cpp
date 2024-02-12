@@ -75,9 +75,29 @@ const char* AForm::GradeTooLowException::what(void) const throw(){
     return "Grade is too low\n";
 }
 
+const char* AForm::FormNotSignedException::what(void) const throw(){
+    return "Form is not signed\n";
+}
+
+const char* AForm::ExecutionNotAllowed::what(void) const throw(){
+    return "Bureaucrat's grade is too low\n";
+}
+
 void AForm::beSigned(const Bureaucrat& b){
     if (b.getGrade() <= this->getSignGrade())
         _sign = true;
     else
         throw GradeTooLowException();
+}
+
+bool AForm::isExecutable(Bureaucrat const & executor) const{
+    if (this->getSign() == false){
+        throw FormNotSignedException();
+        return false;
+    }
+    else if (executor.getGrade() >= this->getExecGrade()){
+        throw ExecutionNotAllowed();
+        return false;
+    }
+    return true;
 }

@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:41:40 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 10:43:55 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/12 14:59:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ class PresidentialPardonForm: public AForm{
         ~PresidentialPardonForm();
         PresidentialPardonForm(const PresidentialPardonForm &old_obj);
         PresidentialPardonForm& operator=(const PresidentialPardonForm &old_obj);
+
+        void execute(Bureaucrat const &executor) const;
 };
 #endif
