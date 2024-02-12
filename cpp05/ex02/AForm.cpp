@@ -13,12 +13,12 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm(): _name("default"), _sign(0), _sign_grade(1), _exec_grade(1) {
+AForm::AForm(): _name("default"), _sign(0), _sign_grade(1), _exec_grade(1), _target("Nothing") {
     std::cout << "AForm default constructor called\n";
 }
 
-AForm::AForm(const std::string name, const int sign_grade, const int exec_grade):
- _name(name), _sign(0), _sign_grade(sign_grade), _exec_grade(exec_grade) {
+AForm::AForm(const std::string name, const int sign_grade, const int exec_grade, const std::string target):
+ _name(name), _sign(0), _sign_grade(sign_grade), _exec_grade(exec_grade), _target(target) {
     std::cout << "AForm constructor called\n";
     if (_sign_grade < 1 || _exec_grade < 1)
         throw GradeTooHighException();
@@ -31,7 +31,7 @@ AForm::~AForm(){
 }
 
 AForm::AForm(const AForm &old_obj):
-_name(old_obj.getName()), _sign_grade(old_obj.getSignGrade()), _exec_grade(old_obj.getExecGrade()){
+_name(old_obj.getName()), _sign_grade(old_obj.getSignGrade()), _exec_grade(old_obj.getExecGrade()), _target(old_obj.getTarget()){
     *this = old_obj;
 }
 
@@ -50,6 +50,11 @@ int AForm::getExecGrade(void) const{
 const std::string AForm::getName(void) const{
     return _name;
 }
+
+const std::string AForm::getTarget(void) const{
+    return _target;
+}
+
 bool AForm::getSign(void) const{
     return _sign;
 }
@@ -57,7 +62,8 @@ bool AForm::getSign(void) const{
 std::ostream & operator << (std::ostream &out, const AForm &c){
     out << c.getName() << ", AForm signed: " << c.getSign() << std::endl
     << "AForm sign grade: " << c.getSignGrade() << std::endl
-    << "AForm exec grade: " << c.getExecGrade() << std::endl;
+    << "AForm exec grade: " << c.getExecGrade() << std::endl
+    << "AForm target: " << c.getTarget() << std::endl;
     return out;
 }
 

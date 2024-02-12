@@ -21,9 +21,10 @@ class AForm{
         bool    _sign;
         const int _sign_grade;
         const int _exec_grade;
+        const std::string   _target;
     public:
         AForm();
-        AForm(const std::string name, const int sign_grade, const int exec_grade);
+        AForm(const std::string name, const int sign_grade, const int exec_grade, const std::string target);
         ~AForm();
         AForm(const AForm &old_obj);
         AForm& operator=(const AForm &old_obj);
@@ -31,8 +32,9 @@ class AForm{
         int getSignGrade(void) const;
         int getExecGrade(void) const;
         const std::string getName(void) const;
+        const std::string getTarget(void) const;
         bool getSign(void) const;
-        void beSigned(const Bureaucrat& b);
+        virtual void beSigned(const Bureaucrat& b) = 0;
 
         class GradeTooHighException: public std::exception{
             const char* what(void) const throw();
