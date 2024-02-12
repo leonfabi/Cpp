@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 22:54:30 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 10:04:55 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/12 16:32:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,14 @@ void Bureaucrat::decrement(void){
     }catch(std::exception &e){
         std::cout << this->getName() << " couldn't sign the Form: " << f.getName()
         << " because " << e.what();
+    }
+ }
+
+void Bureaucrat::executeForm(AForm const & form){
+    try{
+        form.execute(*this);
+        std::cout << "\033[1m\033[32m" << this->getName() << " executed " << form.getName() << ".\033[0m\n";
+    }catch (std::exception& e){
+        std::cout << "\033[1m\033[31m" << this->getName() << " wasn't able to execute the form " << form.getName() << ".\033[0m\n";
     }
  }

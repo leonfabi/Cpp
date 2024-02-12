@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 22:48:07 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 09:56:11 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/12 16:25:29 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Bureaucrat{
         void increment(void);
         void decrement(void);
         void signForm(AForm& f) const;
+        void executeForm(AForm const & form);
 
         class GradeTooHighException: public std::exception{
             const char* what(void) const throw();

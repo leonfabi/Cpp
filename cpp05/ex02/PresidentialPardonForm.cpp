@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:42:06 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 15:29:39 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/12 16:36:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &old
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const{
     if(this->isExecutable(executor) == true){
-        std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox\n"
+        std::cout << "\033[3m\033[34m" << this->getTarget() << " has been pardoned by Zaphod Beeblebrox\n"
         "Hey there, Mr. President of the whole wide Galaxy – Zaphod Beeblebrox here,\n"
         "yeah, the same one and only. Listen, I know we've had our, let's call them,\n"
         "interstellar misunderstandings. You know how it is, cruising through the\n"
@@ -55,6 +55,6 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const{
         "behind us, maybe over a Pan Galactic Gargle Blaster or two? On me, naturally.\n"
         "I know this great little place on Betelgeuse V – the ambiance is just electric.\n\n"
         "Yours in cosmic camaraderie,\n"
-        "Zaphod Beeblebrox\n";
+        "Zaphod Beeblebrox\033[0m\n";
     }
 }
