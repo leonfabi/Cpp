@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 22:54:30 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/03 18:33:10 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/12 10:04:30 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ void Bureaucrat::decrement(void){
 }
 
  void Bureaucrat::signForm(Form& f) const{
-    if (f.getSign()){
+    if (f.getSign() == true){
         std::cout << "Form is already signed\n";
         return;
     }
     try{
         f.beSigned(*this);
         std::cout << this->getName() << " signed Form: " << f.getName() << std::endl;
-    // }catch(const Form::GradeTooLowException &e){
     }catch(std::exception &e){
         std::cout << this->getName() << " couldn't sign the Form: " << f.getName()
         << " because " << e.what();
