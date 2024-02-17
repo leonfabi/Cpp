@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:39:10 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/17 11:29:19 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/17 11:39:26 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,4 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
         else
             std::cout << "Oh nooooooo the robotomy for " << this->getTarget() << " failed:(\033[0m\n";
     }
-}>
+}
