@@ -6,14 +6,15 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:39:44 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 16:48:45 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/17 11:27:18 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 #include "AForm.hpp"
-#include "ctime"
+#include <ctime>
+#include <cstdlib>
 
 class RobotomyRequestForm: public AForm{
     public:

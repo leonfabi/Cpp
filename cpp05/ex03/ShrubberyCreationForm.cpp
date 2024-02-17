@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:14:51 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 16:41:01 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/17 11:26:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &old_ob
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     if (this->isExecutable(executor) == true){
         const std::string filename = this->getTarget()+"_shrubbery";
-        std::ofstream OutFile(filename);
+        std::ofstream OutFile(filename.c_str());
         OutFile <<
         "                      .-++++=: \n"
         "                    .:++++++++++:. \n"
