@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/02/17 12:13:17 by fkrug            ###   ########.fr        #
+#    Updated: 2024/02/17 12:16:15 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,3 +34,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+
