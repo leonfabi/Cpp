@@ -6,13 +6,19 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:27:33 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/19 13:27:04 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:44:29 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 const std::string Intern::options[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+
+const Intern::AFormFactory Intern::factory[3] = {
+    &Intern::create_shrubbery_creation,
+    &Intern::create_robotomy_request,
+    &Intern::create_presidential_pardon
+};
 
 Intern::Intern(){
     std::cout << "Intern constructor called\n";
@@ -35,25 +41,20 @@ const char* Intern::WrongForm::what(void) const throw(){
 
 
 AForm* Intern::makeForm(const std::string name, const std::string target){
-    int index = -1;
     for (size_t i = 0; i < 3; i++)
     {
-        if (!name.compare(Intern::options[i]))
-            index = i;
+        if (name == options[i])
+            return (this->*factory[i])(target);
     }
-    switch (index)
-    {
-    case 0:
-        std::cout << "Intern creates form " << name << ".\n";
-        return new ShrubberyCreationForm(target);
-    case 1:
-        std::cout << "Intern creates form " << name << ".\n";
-        return new RobotomyRequestForm(target);
-    case 2:
-        std::cout << "Intern creates form " << name << ".\n";
-        return new PresidentialPardonForm(target);
-    default:
-        throw WrongForm();
-        return NULL;
-    }
+    throw WrongForm();
+}
+
+AForm* Intern::create_shrubbery_creation(const std::string& target){
+    return new ShrubberyCreationForm(target);
+}
+AForm* Intern::create_robotomy_request(const std::string& target){
+    return new RobotomyRequestForm(target);
+}
+AForm* Intern::create_presidential_pardon(const std::string& target){
+    return new PresidentialPardonForm(target);
 }
