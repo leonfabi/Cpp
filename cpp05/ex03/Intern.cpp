@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:27:33 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/12 18:12:49 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:27:04 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Intern::Intern(const Intern& old_obj){
 }
 
 const char* Intern::WrongForm::what(void) const throw(){
-    return "Intern didn't know what he was doing\n";
+    return "Intern didn't know what he was doing\nThe options are ['shrubbery creation', 'robotomy request', 'presidential pardon']";
 }
 
 
