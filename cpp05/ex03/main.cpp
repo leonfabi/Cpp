@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:36:40 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/19 14:51:36 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:56:22 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int main(void){
     a.executeForm(*shrubbery);
     a.signForm(*robotomy);
     a.executeForm(*robotomy);
+    delete president;
+    delete shrubbery;
+    delete robotomy;
     }catch(std::exception& e){
         std::cout << e.what();
     }
