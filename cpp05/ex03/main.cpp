@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:36:40 by fkrug             #+#    #+#             */
-/*   Updated: 2024/02/19 14:50:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:51:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void){
     }
     }
     {
-    std::cout << "\033[3m\033[34m TEST2:wrong name ################\033[0m\n\n\n";
+    std::cout << "\033[3m\033[34m TEST2: All Forms ################\033[0m\n\n\n";
     Bureaucrat a("Max", 14);
     Intern I;
     try{
