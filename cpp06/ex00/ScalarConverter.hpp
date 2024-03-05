@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:59:29 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/04 17:33:10 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/05 16:13:53 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class ScalarConverter{
     private:
         const std::string _input;
-        enum Type{CHAR, INT, FLOAT, DOUBLE, UNKNOWN};
+        enum Type{CHAR, INT, FLOAT, DOUBLE, PSEUDO_FLOAT, PSEUDO_DOUBLE, UNKNOWN};
         bool _hasDecimal;
         bool _hasSign;
         bool _hasF;

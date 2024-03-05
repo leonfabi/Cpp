@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:20:21 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/04 19:22:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/05 16:25:26 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter &old_obj){
 
 ScalarConverter::Type ScalarConverter::determineLiteralType(const std::string &input){
     if (input == "inff" || input == "+inff" || input == "-inff" || input == "nanf" || input == "+nanf" || input == "-nanf")
-        return FLOAT;
+        return PSEUDO_FLOAT;
     else if (input == "inf" || input == "+inf" || input == "-inf" || input == "nan" || input == "+nan" || input == "-nan")
-        return DOUBLE;
+        return PSEUDO_DOUBLE;
     else if (input.length() == 1 && !std::isdigit(input[0])){
         return CHAR;
     }
@@ -89,6 +89,21 @@ void ScalarConverter::convert(const std::string &input){
         break;
     case DOUBLE:
         std::cout << "DOUBLE\n";
+        sc.isDouble();
+        break;
+    case PSEUDO_DOUBLE:
+        std::cout << "PSEUDO_DOUBLE\n";
+        std::cout << "char: impossible\n"
+        << "int: impossible\n"
+        << "float: "<< input << "f\n"
+        << "double: " << input << "\n";
+        break;
+    case PSEUDO_FLOAT:
+        std::cout << "PSEUDO_FLOAT\n";
+        std::cout << "char: impossible\n"
+        << "int: impossible\n"
+        << "float: "<< input << "\n"
+        << "double: " << input.substr(0, input.length() - 1) << "\n";
         break;
     default:
         std::cout << "UNKNOWN\n";
@@ -99,7 +114,7 @@ void ScalarConverter::convert(const std::string &input){
 void ScalarConverter::isChar(void){
     char c = _input[0];
     std::cout << "char: " << c << "\n"
-    << "int: " << static_cast<int>(c) << "\n" << std::setprecision(4)
+    << "int: " << static_cast<int>(c) << "\n" << std::setprecision(1) << std::fixed
     << "float: " << static_cast<float>(c) << "f\n"
     << "double: " << static_cast<double>(c) << "\n";
 }
@@ -107,7 +122,6 @@ void ScalarConverter::isChar(void){
 void ScalarConverter::isInt(void){
     std::istringstream stream(_input);
     long double i;
-    int precision = 1;
     stream >> i;
     std::cout << std::setprecision(10);
     if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min()){
@@ -119,7 +133,7 @@ void ScalarConverter::isInt(void){
     else
         std::cout << "char: " << static_cast<char>(i) << "\n";
     std::cout << "int: " << i << "\n";
-    std::cout << std::setprecision(precision) << std::fixed;
+    std::cout << std::setprecision(1) << std::fixed;
     if (i > std::numeric_limits<float>::max() || i < -std::numeric_limits<float>::max())
         std::cout << "float: overflow\n";
     else
@@ -156,4 +170,32 @@ void ScalarConverter::isFloat(void){
         std::cout << "double: overflow\n";
     else
         std::cout << "double: " << static_cast<double>(i) << "\n";
+}
+
+void ScalarConverter::isDouble(void){
+    std::istringstream stream(_input);
+    long double i;
+    int precision = _input[0] == '+' || _input[0] == '-' ? _input.length() - 1 : _input.length();
+    precision = 1;
+    stream >> i;
+    if (i > std::numeric_limits<double>::max() || i < -std::numeric_limits<double>::max()){
+        std::cout << "\"" << _input << "\" Not convertable because of Double overflow\n";
+        return ;
+    }
+    if (i > 255 || i < 0 || !std::isprint(i))
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: " << static_cast<char>(i) << "\n";
+    // std::cout << std::setprecision(10);
+    if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min())
+        std::cout << "int: overflow\n";
+    else
+        std::cout << "int: " << static_cast<int>(i) << "\n";
+    // std::cout << std::setprecision(precision) << std::fixed;
+    std::cout << std::fixed;
+    if (i > std::numeric_limits<float>::max() || i < -std::numeric_limits<float>::max())
+        std::cout << "float: overflow\n";
+    else
+        std::cout << "float: " << static_cast<float>(i) << "f\n";
+    std::cout << "double: " << i << "\n";
 }
