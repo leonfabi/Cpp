@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:20:21 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/18 09:36:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 14:44:22 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ _input(input), _hasDecimal(false), _hasSign(false), _hasF(false), _start(0){
 }
 
 ScalarConverter::ScalarConverter(){
-    std::cout << "ScalarConverter default constructor called\n";
+    // std::cout << "ScalarConverter default constructor called\n";
 }
 
 ScalarConverter::~ScalarConverter(){

@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:18:24 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/04 17:09:07 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 14:43:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ int main(int argc, char* argv[]){
         return 1;
     }
     ScalarConverter::convert(argv[1]);
-    // std::cout << "What happens if I try to cast an str to an Int? " << static_cast<int>(999999999999999)<< "\n";
     return 0;
 }
