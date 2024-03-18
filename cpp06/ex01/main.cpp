@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:20:34 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/18 10:40:55 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:42:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int main(){
     deserializedData->test = -234;
     std::cout << "Modify the value of deserialized data pointer: " << deserializedData->test << std::endl;
     std::cout << "Value of original Data struct: " << testData.test << std::endl;
+
+    std::cout << "Is the deserialized address the same as the original: " << ((&testData == deserializedData) ? "Success" : "Failure") << std::endl;
     return 0;
 }
