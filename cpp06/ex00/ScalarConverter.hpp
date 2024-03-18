@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:59:29 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/05 16:13:53 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:19:17 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ScalarConverter{
         bool _hasDecimal;
         bool _hasSign;
         bool _hasF;
-        int _start;
+        size_t _start;
         ScalarConverter();
         ScalarConverter(const std::string &input);
         ~ScalarConverter();

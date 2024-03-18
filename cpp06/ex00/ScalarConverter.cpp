@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:20:21 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/05 16:25:26 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:36:48 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ ScalarConverter::Type ScalarConverter::determineLiteralType(const std::string &i
     else if (input.length() == 1 && !std::isdigit(input[0])){
         return CHAR;
     }
-    else if (input[0] == '+' || input[0] == '-'){
-        _hasSign = true;
-        _start = 1;
-    }
+    _hasDecimal = false;
+    _hasSign = (input[0] == '+' || input[0] == '-');
+    _hasF = false;
+    _start = _hasSign ? 1 : 0;
     for (size_t i = _start; i < input.length(); i++){
         if (input[i] == '.'){
-            if (_hasDecimal)
+            if (_hasDecimal || i == input.length() - 1 || i == _start)
                 return UNKNOWN;
             _hasDecimal = true;
         }
         else if (input[i] == 'f' || input[i] == 'F'){
-            if (_hasF)
+            if (_hasF || !_hasDecimal || i == input.find('.') + 1 || i != input.length() - 1)
                 return UNKNOWN;
             _hasF = true;
         }
@@ -62,8 +62,6 @@ ScalarConverter::Type ScalarConverter::determineLiteralType(const std::string &i
     }
     if (_hasDecimal)
         return _hasF ? FLOAT : DOUBLE;
-    else if (_hasF)
-        return UNKNOWN;
     else
         return INT;
     }
@@ -145,10 +143,11 @@ void ScalarConverter::isInt(void){
 }
 
 void ScalarConverter::isFloat(void){
-    std::istringstream stream(_input.substr(0, _input.length() - 1));
+    std::string stringFloat = _input.substr(0, _input.length() - 1);
+    std::istringstream stream(stringFloat);
     long double i;
-    int precision = _input[0] == '+' || _input[0] == '-' ? _input.length() - 1 : _input.length();
-    precision = 1;
+    size_t commaPosition = stringFloat.find('.');
+    int precision = commaPosition != std::string::npos ? stringFloat.length() - commaPosition - 1 : 0;
     stream >> i;
     if (i > std::numeric_limits<float>::max() || i < -std::numeric_limits<float>::max()){
         std::cout << "\"" << _input << "\" Not convertable because of Float overflow\n";
@@ -158,13 +157,11 @@ void ScalarConverter::isFloat(void){
         std::cout << "char: Non displayable\n";
     else
         std::cout << "char: " << static_cast<char>(i) << "\n";
-    // std::cout << std::setprecision(10);
     if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min())
         std::cout << "int: overflow\n";
     else
         std::cout << "int: " << static_cast<int>(i) << "\n";
-    // std::cout << std::setprecision(precision) << std::fixed;
-    std::cout << std::fixed;
+    std::cout << std::setprecision(precision) << std::fixed;
     std::cout << "float: " << i << "f\n";
     if (i > std::numeric_limits<double>::max() || i < -std::numeric_limits<double>::max())
         std::cout << "double: overflow\n";
@@ -175,8 +172,8 @@ void ScalarConverter::isFloat(void){
 void ScalarConverter::isDouble(void){
     std::istringstream stream(_input);
     long double i;
-    int precision = _input[0] == '+' || _input[0] == '-' ? _input.length() - 1 : _input.length();
-    precision = 1;
+    size_t commaPosition = _input.find('.');
+    int precision = commaPosition != std::string::npos ? _input.length() - commaPosition - 1 : 0;
     stream >> i;
     if (i > std::numeric_limits<double>::max() || i < -std::numeric_limits<double>::max()){
         std::cout << "\"" << _input << "\" Not convertable because of Double overflow\n";
@@ -186,13 +183,11 @@ void ScalarConverter::isDouble(void){
         std::cout << "char: Non displayable\n";
     else
         std::cout << "char: " << static_cast<char>(i) << "\n";
-    // std::cout << std::setprecision(10);
     if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min())
         std::cout << "int: overflow\n";
     else
         std::cout << "int: " << static_cast<int>(i) << "\n";
-    // std::cout << std::setprecision(precision) << std::fixed;
-    std::cout << std::fixed;
+    std::cout << std::setprecision(precision) << std::fixed;
     if (i > std::numeric_limits<float>::max() || i < -std::numeric_limits<float>::max())
         std::cout << "float: overflow\n";
     else
