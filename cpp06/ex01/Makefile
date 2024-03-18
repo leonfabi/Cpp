@@ -6,15 +6,15 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/03/18 10:15:21 by fkrug            ###   ########.fr        #
+#    Updated: 2024/03/18 10:15:43 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = serializer
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -g -Werror
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
