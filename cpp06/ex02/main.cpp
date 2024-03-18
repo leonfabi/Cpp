@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:00:37 by fkrug             #+#    #+#             */
-/*   Updated: 2024/03/18 12:06:41 by fkrug            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:14:30 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int main() {
     delete c;
 
     std::cout << "Random generator: ";
-    identify(generate());
+    Base* rand = generate();
+    identify(rand);
+    delete rand;
     return 0;
 }
