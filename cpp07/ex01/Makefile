@@ -6,11 +6,11 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/03/18 12:42:07 by fkrug            ###   ########.fr        #
+#    Updated: 2024/03/19 11:09:15 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = templates
+NAME = ex01
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -g -Werror
