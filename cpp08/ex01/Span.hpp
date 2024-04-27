@@ -9,13 +9,16 @@
 class Span {
 public:
     Span(unsigned int N);
+    ~Span();
+    Span& operator=(const Span& other);
+    Span(const Span& other);
     void addNumber(int number);
-    int shortestSpan();
-    int longestSpan();
+    int shortestSpan(void);
+    int longestSpan(void);
 
 private:
-    std::vector<int> numbers;
-    unsigned int max_size;
+    std::vector<int> _numbers;
+    unsigned int _max_size;
 };
 
-#endif // SPAN_HPP
+#endif
