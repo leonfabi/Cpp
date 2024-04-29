@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/04/15 01:52:05 by fkrug            ###   ########.fr        #
+#    Updated: 2024/04/27 15:01:07 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ex02
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -g -Werror
-SRC = main.cpp Span.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
