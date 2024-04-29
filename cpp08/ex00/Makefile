@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/03/25 09:02:14 by fkrug            ###   ########.fr        #
+#    Updated: 2024/04/29 11:20:46 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,14 @@ CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -g -Werror
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
+DEPS = easyfind.hpp
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp
+%.o: %.cpp $(DEPS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
