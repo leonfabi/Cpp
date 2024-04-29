@@ -15,6 +15,14 @@ public:
     void addNumber(int number);
     int shortestSpan(void);
     int longestSpan(void);
+    template <typename InputIterator>
+    void addRange(InputIterator begin, InputIterator end) {
+        size_t count = std::distance(begin, end);
+        if (_numbers.size() + count > _max_size) {
+            throw std::length_error("Span has reached its maximum capacity.");
+        }
+        _numbers.insert(_numbers.end(), begin, end);
+    }
 
 private:
     std::vector<int> _numbers;

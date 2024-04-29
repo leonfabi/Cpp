@@ -30,4 +30,20 @@ int main (){
         std::cout << e.what() << std::endl;
     }
     }
+    {
+    Span sp(10);
+    std::vector<int> data;
+    data.push_back(1);
+    data.push_back(2);
+    data.push_back(3);
+    data.push_back(4);
+    data.push_back(5);
+    try {
+        sp.addRange(data.begin(), data.end());
+        sp.addRange(data.begin(), data.end());
+        sp.addRange(data.begin(), data.end());
+    } catch (const std::exception& e){
+        std::cout << e.what() << std::endl;
+    }
+    }
 }

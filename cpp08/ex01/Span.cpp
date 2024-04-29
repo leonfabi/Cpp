@@ -55,3 +55,4 @@ int Span::longestSpan(void) {
 
     return maxElement - minElement;
 }
+
