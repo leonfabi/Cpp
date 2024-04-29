@@ -2,30 +2,28 @@
 #define MUTANTSTACK_HPP
 
 #include <stack>
-#include <deque>
 
-template <typename T, typename Container = std::deque<T>>
-class MutantStack : public std::stack<T, Container> {
-public:
-    using std::stack<T, Container>::stack; // Inherit constructors
-    typedef typename Container::iterator iterator;
-    typedef typename Container::const_iterator const_iterator;
+template <typename T>
+class MutantStack: public std::stack<T> {
+    public:
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-    iterator begin() {
-        return this->c.begin();
-    }
+        iterator begin() {
+            return this->c.begin();
+        }
 
-    iterator end() {
-        return this->c.end();
-    }
+        iterator end() {
+            return this->c.end();
+        }
 
-    const_iterator begin() const {
-        return this->c.begin();
-    }
+        const_iterator begin() const {
+            return this->c.begin();
+        }
 
-    const_iterator end() const {
-        return this->c.end();
-    }
+        const_iterator end() const {
+            return this->c.end();
+        }
 };
 
-#endif // MUTANTSTACK_HPP
+#endif
