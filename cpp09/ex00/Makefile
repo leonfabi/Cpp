@@ -6,18 +6,17 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:07:34 by fkrug             #+#    #+#              #
-#    Updated: 2024/05/06 17:28:13 by fkrug            ###   ########.fr        #
+#    Updated: 2024/05/06 20:09:51 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -g 
-# -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -g -Werror
 SRC = main.cpp BitcoinExchange.cpp
 OBJ = $(SRC:.cpp=.o)
-DEPS = 
+DEPS = BitcoinExchange.hpp
 
 all: $(NAME)
 
