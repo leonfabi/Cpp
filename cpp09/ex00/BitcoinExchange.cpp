@@ -1,5 +1,13 @@
 #include "BitcoinExchange.hpp"
 
+bool tmCompare::operator()(const t_tm& lhs, const t_tm& rhs) const {
+    if (lhs.tm_year != rhs.tm_year)
+        return lhs.tm_year < rhs.tm_year;
+    if (lhs.tm_mon != rhs.tm_mon)
+        return lhs.tm_mon < rhs.tm_mon;
+    return lhs.tm_mday < rhs.tm_mday;
+}
+
 bool operator==(const t_tm& lhs, const t_tm& rhs) {
     return (lhs.tm_year == rhs.tm_year &&
             lhs.tm_mon == rhs.tm_mon &&

@@ -10,17 +10,10 @@
 #include <cstdlib>
 
 typedef struct tm t_tm;
-struct tmCompare {
-    bool operator()(const t_tm& lhs, const t_tm& rhs) const {
-        if (lhs.tm_year != rhs.tm_year)
-            return lhs.tm_year < rhs.tm_year;
-        if (lhs.tm_mon != rhs.tm_mon)
-            return lhs.tm_mon < rhs.tm_mon;
-        return lhs.tm_mday < rhs.tm_mday;
-    }
-};
 bool operator==(const t_tm& lhs, const t_tm& rhs);
-
+struct tmCompare {
+    bool operator()(const t_tm& lhs, const t_tm& rhs) const;
+};
 
 class BitcoinExchange{
     public:
