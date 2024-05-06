@@ -31,7 +31,7 @@ void BitcoinExchange::readCSV(void) {
             double value = std::atof(valueStr.c_str());
             _database[tm] = value;
         } else {
-            std::cerr << "Value not valid, skip: " << line << "\n";
+            std::cerr << "Error: Value not valid, skip: " << line << "\n";
         }
     }
 }
@@ -98,18 +98,18 @@ void BitcoinExchange::processInput(const std::string& filename) {
         std::istringstream ss(line);
         std::string dateStr, valueStr;
         if (!std::getline(ss, dateStr, '|') || !std::getline(ss, valueStr)){
-            std::cerr << "Error parsing line, skip line: " << line << "\n";
+            std::cerr << "Error: parsing line, skip line: " << line << "\n";
             continue;
         }
         t_tm tm;
         if (!parseDate(dateStr, tm)) {
-            std::cerr << "Invalid date found, skip line: " << line << "\n";
+            std::cerr << "Error: Invalid date found, skip line: " << line << "\n";
             continue;
         }
 
         double value = 0;
         if (!isValidNumber(valueStr, value)) {
-            std::cerr << "Value out of range skip line: " << line << "\n";
+            std::cerr << "Error: Value out of range skip line: " << line << "\n";
             continue;
         }
         calculateBitcoinValue(tm, value);
@@ -120,7 +120,7 @@ void BitcoinExchange::calculateBitcoinValue(const t_tm& tm, double value) {
     std::map<t_tm, double, tmCompare>::iterator it = _database.lower_bound(tm);
     if (it == _database.end() || !(it->first == tm)) {
         if (it == _database.begin()) {
-            std::cerr << "No previous exchange rate found for date: " << "\n";
+            std::cerr << "Error: No previous exchange rate found for date: " << "\n";
             return;
         }
         --it;
