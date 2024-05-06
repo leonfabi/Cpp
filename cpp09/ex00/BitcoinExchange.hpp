@@ -33,6 +33,7 @@ class BitcoinExchange{
         bool isLeapYear(int year);
         bool isValidDate(const t_tm& tm);
         bool isFutureDate(const t_tm& tm);
+        bool isValidNumber(const std::string& str, double& value);
         bool parseDate(const std::string& dateStr, t_tm& tm);
         void calculateBitcoinValue(const t_tm& tm, double value);
         BitcoinExchange(const BitcoinExchange& old_obj);

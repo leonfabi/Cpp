@@ -79,6 +79,14 @@ bool BitcoinExchange::parseDate(const std::string& dateStr, t_tm& tm){
     return false;
 }
 
+bool BitcoinExchange::isValidNumber(const std::string& str, double& value) {
+    std::istringstream iss(str);
+    iss >> value;
+    if (!iss || !iss.eof() || value < 0 || value > 1000)
+        return false;
+    return true;
+}
+
 void BitcoinExchange::processInput(const std::string& filename) {
     std::ifstream file(filename.c_str());
     if (!file.is_open()) 
@@ -99,8 +107,8 @@ void BitcoinExchange::processInput(const std::string& filename) {
             continue;
         }
 
-        double value = atof(valueStr.c_str());
-        if (value < 0 || value > 1000) {
+        double value = 0;
+        if (!isValidNumber(valueStr, value)) {
             std::cerr << "Value out of range skip line: " << line << "\n";
             continue;
         }
