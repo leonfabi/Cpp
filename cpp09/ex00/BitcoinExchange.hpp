@@ -26,6 +26,9 @@ class BitcoinExchange{
         void readCSV(void);
         ~BitcoinExchange();
     private:
+        bool isLeapYear(int year);
+        bool isValidDate(const t_tm& tm);
+        bool isFutureDate(const t_tm& tm);
         bool parseDate(const std::string& dateStr, t_tm& tm);
         BitcoinExchange(const BitcoinExchange& old_obj);
         BitcoinExchange& operator=(const BitcoinExchange& old_obj);

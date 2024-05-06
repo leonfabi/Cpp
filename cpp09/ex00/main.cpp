@@ -6,6 +6,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    BitcoinExchange btc;
-    btc.readCSV();
+    try {
+        BitcoinExchange btc;
+        btc.readCSV();
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << "\n";
+        return 1;
+    }
 }
