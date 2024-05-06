@@ -1,14 +1,21 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() {
+bool operator==(const t_tm& lhs, const t_tm& rhs) {
+    return (lhs.tm_year == rhs.tm_year &&
+            lhs.tm_mon == rhs.tm_mon &&
+            lhs.tm_mday == rhs.tm_mday);
+}
+
+BitcoinExchange::BitcoinExchange(const std::string& filename) {
     readCSV();
+    processInput(filename);
 }
 
 BitcoinExchange::~BitcoinExchange() {
 }
 
 void BitcoinExchange::readCSV(void) {
-    std::ifstream file("wrong_data.csv");
+    std::ifstream file("data.csv");
     if (!file.is_open()) 
         throw std::runtime_error("Could not open file");
     std::string line;
@@ -70,4 +77,49 @@ bool BitcoinExchange::parseDate(const std::string& dateStr, t_tm& tm){
             return true;
     }
     return false;
+}
+
+void BitcoinExchange::processInput(const std::string& filename) {
+    std::ifstream file(filename.c_str());
+    if (!file.is_open()) 
+        throw std::runtime_error("Could not open file");
+    std::string line;
+    if (!std::getline(file, line) || line != "date | value")
+        throw std::runtime_error("The first line of the input does not match expected header 'date | value'.");
+    while (std::getline(file, line)) {
+        std::istringstream ss(line);
+        std::string dateStr, valueStr;
+        if (!std::getline(ss, dateStr, '|') || !std::getline(ss, valueStr)){
+            std::cerr << "Error parsing line, skip line: " << line << "\n";
+            continue;
+        }
+        t_tm tm;
+        if (!parseDate(dateStr, tm)) {
+            std::cerr << "Invalid date found, skip line: " << line << "\n";
+            continue;
+        }
+
+        double value = atof(valueStr.c_str());
+        if (value < 0 || value > 1000) {
+            std::cerr << "Value out of range skip line: " << line << "\n";
+            continue;
+        }
+        calculateBitcoinValue(tm, value);
+    }
+}
+
+void BitcoinExchange::calculateBitcoinValue(const t_tm& tm, double value) {
+    std::map<t_tm, double, tmCompare>::iterator it = _database.lower_bound(tm);
+    if (it == _database.end() || !(it->first == tm)) {
+        if (it == _database.begin()) {
+            std::cerr << "No previous exchange rate found for date: " << "\n";
+            return;
+        }
+        --it;
+    }
+    double exchangeRate = it->second;
+    double bitcoinValue = value * exchangeRate;
+    char dateStr[11];
+    strftime(dateStr, sizeof(dateStr), "%Y-%m-%d", &tm);
+    std::cout << dateStr << " => " << value << " = " << bitcoinValue << "\n";
 }

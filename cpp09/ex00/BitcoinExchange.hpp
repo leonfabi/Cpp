@@ -19,17 +19,22 @@ struct tmCompare {
         return lhs.tm_mday < rhs.tm_mday;
     }
 };
+bool operator==(const t_tm& lhs, const t_tm& rhs);
+
 
 class BitcoinExchange{
     public:
-        BitcoinExchange();
+        BitcoinExchange(const std::string& filename);
         ~BitcoinExchange();
+        void processInput(const std::string& filename);
     private:
+        BitcoinExchange();
         void readCSV(void);
         bool isLeapYear(int year);
         bool isValidDate(const t_tm& tm);
         bool isFutureDate(const t_tm& tm);
         bool parseDate(const std::string& dateStr, t_tm& tm);
+        void calculateBitcoinValue(const t_tm& tm, double value);
         BitcoinExchange(const BitcoinExchange& old_obj);
         BitcoinExchange& operator=(const BitcoinExchange& old_obj);
         std::map<t_tm, double, tmCompare> _database;
