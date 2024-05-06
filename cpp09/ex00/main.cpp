@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
 
     try {
         BitcoinExchange btc;
-        btc.readCSV();
+        // btc.readCSV();
     } catch (const std::exception& e) {
         std::cerr << e.what() << "\n";
         return 1;

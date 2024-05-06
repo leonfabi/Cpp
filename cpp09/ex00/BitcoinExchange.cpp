@@ -1,13 +1,14 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {
+    readCSV();
 }
 
 BitcoinExchange::~BitcoinExchange() {
 }
 
 void BitcoinExchange::readCSV(void) {
-    std::ifstream file("data.csv");
+    std::ifstream file("wrong_data.csv");
     if (!file.is_open()) 
         throw std::runtime_error("Could not open file");
     std::string line;

@@ -23,9 +23,9 @@ struct tmCompare {
 class BitcoinExchange{
     public:
         BitcoinExchange();
-        void readCSV(void);
         ~BitcoinExchange();
     private:
+        void readCSV(void);
         bool isLeapYear(int year);
         bool isValidDate(const t_tm& tm);
         bool isFutureDate(const t_tm& tm);
