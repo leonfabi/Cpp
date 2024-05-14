@@ -54,10 +54,46 @@ void PmergeMe::merge(std::vector<int>& vec, int left, int middle, int right) {
     }
 }
 
-// void PmergeMe::sortList(std::list<int>& list) {
-//     if (list.size() > 1) {
-//         std::list<int> left(list.begin(), std::next(list.begin(), list.size() / 2));
-//         std::list<int> right(std::next(list.begin(), list.size() / 2), list.end());
+void PmergeMe::sortList(std::list<int>& list) {
+    if (list.size() > 1)
+        fordJohnsonSort(list);
+}
 
-//     }
-// }
+void PmergeMe::fordJohnsonSort(std::list<int>& list) {
+    if (list.size() <= 1)
+        return;
+
+    std::list<int> left, right;
+    std::list<int>::iterator it = list.begin();
+
+    std::advance(it, list.size() / 2);
+    left.splice(left.begin(), list, list.begin(), it);
+    right.splice(right.begin(), list, list.begin(), list.end());
+
+    fordJohnsonSort(left);
+    fordJohnsonSort(right);
+    merge(left, right, list);
+}
+
+void PmergeMe::merge(std::list<int>& left, std::list<int>& right, std::list<int>& merged) {
+    std::list<int>::iterator itLeft = left.begin();
+    std::list<int>::iterator itRight = right.begin();
+
+    while (itLeft != left.end() && itRight != right.end()) {
+        if (*itLeft <= *itRight) {
+            merged.push_back(*itLeft);
+            ++itLeft;
+        } else {
+            merged.push_back(*itRight);
+            ++itRight;
+        }
+    }
+    while (itLeft != left.end()) {
+        merged.push_back(*itLeft);
+        ++itLeft;
+    }
+    while (itRight != right.end()) {
+        merged.push_back(*itRight);
+        ++itRight;
+    }
+}
