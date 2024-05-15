@@ -20,6 +20,7 @@ bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>
 }
 
 int main(int argc, char* argv[]) {
+    int display = 10;
     if (argc < 2) {
         std::cout << "No Input provvided \n";
         return 1;
@@ -41,24 +42,24 @@ int main(int argc, char* argv[]) {
     double elapsed_list = static_cast<double>(end_list - start_list) / CLOCKS_PER_SEC * 1e6;
 
     std::cout << "Before: ";
-    for (int i = 1; i < argc && i < 4; i++)
+    for (int i = 1; i < argc && i < display + 1; i++)
         std::cout << argv[i] << " ";
-    if (argc > 4)
+    if (argc > display + 1)
         std::cout << "[...]";
     std::cout << std::endl;
 
     std::cout << "After (vector): ";
-    for (int i = 0; i < static_cast<int>(vector.size()) && i < 4; i++)
+    for (int i = 0; i < static_cast<int>(vector.size()) && i < display; i++)
         std::cout << vector[i] << " ";
-    if (vector.size() > 4)
+    if (vector.size() > static_cast<size_t>(display))
         std::cout << "[...]";
     std::cout << std::endl;
 
-    std::cout << "After (list): ";
+    std::cout << "After (list)  : ";
     std::list<int>::iterator it = list.begin();
-    for (int i = 0; i < static_cast<int>(list.size()) && i < 4; i++, it++)
+    for (int i = 0; i < static_cast<int>(list.size()) && i < display; i++, it++)
         std::cout << *it << " ";
-    if (list.size() > 4)
+    if (list.size() > static_cast<size_t>(display))
         std::cout << "[...]";
     std::cout << std::endl;
 

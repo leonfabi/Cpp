@@ -100,8 +100,9 @@ void BitcoinExchange::processInput(const std::string& filename) {
     if (!file.is_open()) 
         throw std::runtime_error("Could not open file");
     std::string line;
-    if (!std::getline(file, line) || line != "date | value")
-        throw std::runtime_error("The first line of the input does not match expected header 'date | value'.");
+    if (!std::getline(file, line) || line != "date | value") {
+        std::cerr << "The first line of the input does not match expected header 'date | value': " << line << std::endl;
+    }
     while (std::getline(file, line)) {
         std::istringstream ss(line);
         std::string dateStr, valueStr;
@@ -128,7 +129,9 @@ void BitcoinExchange::calculateBitcoinValue(const t_tm& tm, double value) {
     std::map<t_tm, double, tmCompare>::iterator it = _database.lower_bound(tm);
     if (it == _database.end() || !(it->first == tm)) {
         if (it == _database.begin()) {
-            std::cerr << "Error: No previous exchange rate found for date: " << "\n";
+            char dateStr[11];
+            strftime(dateStr, sizeof(dateStr), "%Y-%m-%d", &tm);
+            std::cerr << "Error: No previous exchange rate found for date: " << dateStr << "\n";
             return;
         }
         --it;
