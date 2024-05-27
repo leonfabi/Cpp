@@ -19,14 +19,10 @@ class PmergeMe {
         PmergeMe(const PmergeMe& other);
         PmergeMe& operator=(const PmergeMe& other);
 
-        void fordJohnsonSort(std::vector<int>& vec, int left_index, int right_index);
-        void fordJohnsonSort(std::list<int>& list);
-        void mergeInsertSort(std::vector<int>& vec, int left, int right);
-        void mergeInsertSort(std::list<int>& list);
-        void insertionSort(std::vector<int>& vec, int left, int right);
-        void insertionSort(std::list<int>& list);
-        std::vector<int> generateJacobsthal(int n);
+        void pairAndSort(std::vector<int>& vec);
 
+        std::vector<int>::iterator prev(std::vector<int>::iterator it, int n);
+        std::vector<int>::iterator next(std::vector<int>::iterator it, int n);
 
 };
 
