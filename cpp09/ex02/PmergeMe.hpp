@@ -23,6 +23,10 @@ class PmergeMe {
         void fordJohnsonSort(std::list<int>& list);
         void merge(std::vector<int>& vec, int left, int middle, int right);
         void merge(std::list<int>& left, std::list<int>& right, std::list<int>& merged);
+        void insertionSort(std::vector<int>& vec, int left, int right);
+        void insertionSort(std::list<int>& list);
+        std::vector<int> generateJacobsthal(int n);
+
 
 };
 
