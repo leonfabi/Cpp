@@ -20,6 +20,10 @@ class PmergeMe {
         PmergeMe& operator=(const PmergeMe& other);
 
         void pairAndSort(std::vector<int>& vec);
+        void recursiveSortPairsByMax(std::vector<int>& vec, int left, int right);
+        void splitIntoMainChainAndPend(std::vector<int>& vec, std::list<int>& main_chain, std::vector<int>& pend);
+        void insertPendElements(std::list<int>& main_chain, std::vector<int>& pend);
+        std::vector<int> generateJacobsthalSequence(int n);
 
         std::vector<int>::iterator prev(std::vector<int>::iterator it, int n);
         std::vector<int>::iterator next(std::vector<int>::iterator it, int n);

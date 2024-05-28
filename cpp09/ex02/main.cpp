@@ -36,10 +36,10 @@ int main(int argc, char* argv[]) {
     clock_t end_vec = clock();
     double elapsed_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1e6;
 
-    clock_t start_list = clock();
-    sorter.sortList(list);
-    clock_t end_list = clock();
-    double elapsed_list = static_cast<double>(end_list - start_list) / CLOCKS_PER_SEC * 1e6;
+    // clock_t start_list = clock();
+    // sorter.sortList(list);
+    // clock_t end_list = clock();
+    // double elapsed_list = static_cast<double>(end_list - start_list) / CLOCKS_PER_SEC * 1e6;
 
     std::cout << "Before: ";
     for (int i = 1; i < argc && i < display + 1; i++)
@@ -55,14 +55,14 @@ int main(int argc, char* argv[]) {
         std::cout << "[...]";
     std::cout << std::endl;
 
-    std::cout << "After (list)  : ";
-    std::list<int>::iterator it = list.begin();
-    for (int i = 0; i < static_cast<int>(list.size()) && i < display; i++, it++)
-        std::cout << *it << " ";
-    if (list.size() > static_cast<size_t>(display))
-        std::cout << "[...]";
-    std::cout << std::endl;
+    // std::cout << "After (list)  : ";
+    // std::list<int>::iterator it = list.begin();
+    // for (int i = 0; i < static_cast<int>(list.size()) && i < display; i++, it++)
+    //     std::cout << *it << " ";
+    // if (list.size() > static_cast<size_t>(display))
+    //     std::cout << "[...]";
+    // std::cout << std::endl;
 
     std::cout << "Time to process with std::vector: " << elapsed_vec << " us\n";
-    std::cout << "Time to process with std::list: " << elapsed_list << " us\n";
+    // std::cout << "Time to process with std::list: " << elapsed_list << " us\n";
 }
