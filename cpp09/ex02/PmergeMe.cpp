@@ -90,7 +90,7 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>
 void PmergeMe::insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
 
-    for (size_t i = 1; i < pend.size(); ++i) {
+    for (size_t i = 0; i < pend.size(); ++i) {
         int pos = std::min(jacobsthal[i], static_cast<int>(main_chain.size()));
         std::vector<int>::iterator it = main_chain.begin();
         std::advance(it, pos);
