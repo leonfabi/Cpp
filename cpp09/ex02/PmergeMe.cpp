@@ -7,12 +7,11 @@ void PmergeMe::sortVector(std::vector<int>& vec) {
     if (vec.size() > 1) {
         pairAndSort(vec);
         recursiveSortPairsByMax(vec, 0, vec.size() / 2 - 1);
-        std::list<int> main_chain;
+        std::vector<int> main_chain;
         std::vector<int> pend;
         splitIntoMainChainAndPend(vec, main_chain, pend);
         insertPendElements(main_chain, pend);
 
-        // Copy back the sorted main_chain to vec
         std::copy(main_chain.begin(), main_chain.end(), vec.begin());
     }
 }
@@ -71,7 +70,7 @@ void PmergeMe::recursiveSortPairsByMax(std::vector<int>& vec, int left, int righ
     }
 }
 
-void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::list<int>& main_chain, std::vector<int>& pend) {
+void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>& main_chain, std::vector<int>& pend) {
     int size = vec.size();
     bool has_stray = (size % 2 != 0);
 
@@ -88,16 +87,17 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::list<int>& 
     }
 }
 
-void PmergeMe::insertPendElements(std::list<int>& main_chain, std::vector<int>& pend) {
+void PmergeMe::insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
 
     for (size_t i = 1; i < pend.size(); ++i) {
         int pos = std::min(jacobsthal[i], static_cast<int>(main_chain.size()));
-        std::list<int>::iterator it = main_chain.begin();
+        std::vector<int>::iterator it = main_chain.begin();
         std::advance(it, pos);
         main_chain.insert(it, pend[i]);
     }
 }
+
 
 std::vector<int> PmergeMe::generateJacobsthalSequence(int n) {
     std::vector<int> jacobsthal;
