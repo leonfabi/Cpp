@@ -8,6 +8,7 @@
 #include <cerrno>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 class PmergeMe {
     public:
         PmergeMe();

@@ -122,15 +122,26 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>
 
 void PmergeMe::insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
+    std::cout << "Jacobsthal sequence: ";
+    for (std::vector<int>::iterator it = jacobsthal.begin(); it != jacobsthal.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+    
+    main_chain.insert(main_chain.begin(), pend[0]);
 
-    for (size_t i = 0; i < pend.size(); ++i) {
-        int pos = std::min(jacobsthal[i], static_cast<int>(main_chain.size()));
-        std::vector<int>::iterator it = main_chain.begin();
-        std::advance(it, pos);
-        main_chain.insert(it, pend[i]);
+    for (size_t idx = 1; idx < pend.size(); ++idx) {
+        size_t j = jacobsthal[idx] - 1;
+        j = std::min(j, pend.size() - 1);
+
+        while (j >= static_cast<size_t>(jacobsthal[idx - 1])) {
+            std::vector<int>::iterator it = std::upper_bound(main_chain.begin(), main_chain.end(), pend[j]);
+            main_chain.insert(it, pend[j]);
+            if (j == 0) break;
+            --j;
+        }
     }
 }
-
 
 std::vector<int> PmergeMe::generateJacobsthalSequence(int n) {
     std::vector<int> jacobsthal;
@@ -138,7 +149,7 @@ std::vector<int> PmergeMe::generateJacobsthalSequence(int n) {
     if (n >= 2) jacobsthal.push_back(3);
 
     int j = 3;
-    while (jacobsthal.size() < static_cast<long unsigned int>(n)) {
+    while (jacobsthal.size() < static_cast<size_t>(n)) {
         int size = jacobsthal.size();
         j = jacobsthal[size - 1] + 2 * jacobsthal[size - 2];
         jacobsthal.push_back(j);
