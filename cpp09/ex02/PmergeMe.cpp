@@ -109,10 +109,7 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>
     int size = vec.size();
     bool has_stray = (size % 2 != 0);
 
-    main_chain.push_back(vec[0]);
-    main_chain.push_back(vec[1]);
-
-    for (int i = 2; i < size; i += 2) {
+    for (int i = 0; i < size - (has_stray ? 1 : 0); i += 2) {
         main_chain.push_back(vec[i + 1]);
         pend.push_back(vec[i]);
     }
@@ -121,6 +118,7 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>
         pend.push_back(vec[size - 1]);
     }
 }
+
 
 void PmergeMe::insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
