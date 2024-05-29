@@ -26,9 +26,6 @@ class PmergeMe {
         void insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend);
         std::vector<int> generateJacobsthalSequence(int n);
 
-        std::vector<int>::iterator prev(std::vector<int>::iterator it, int n);
-        std::vector<int>::iterator next(std::vector<int>::iterator it, int n);
-
 };
 
 #endif
