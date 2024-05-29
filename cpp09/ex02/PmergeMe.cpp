@@ -7,12 +7,36 @@ void PmergeMe::sortVector(std::vector<int>& vec) {
     if (vec.size() > 1) {
         pairAndSort(vec);
         recursiveSortPairsByMax(vec, 0, vec.size() / 2 - 1);
+        std::cout << "Vector after recursiveSortPairsByMax: ";
+        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
         std::vector<int> main_chain;
         std::vector<int> pend;
         splitIntoMainChainAndPend(vec, main_chain, pend);
+        std::cout << "Main chain: ";
+        for (std::vector<int>::iterator it = main_chain.begin(); it != main_chain.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "Pend: ";
+        for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
         insertPendElements(main_chain, pend);
-
+        std::cout << "Main chain after insertPendElements: ";
+        for (std::vector<int>::iterator it = main_chain.begin(); it != main_chain.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
         std::copy(main_chain.begin(), main_chain.end(), vec.begin());
+        std::cout << "Vector after sortVector: ";
+        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
     }
 }
 
@@ -25,6 +49,11 @@ void PmergeMe::pairAndSort(std::vector<int>& vec) {
         if (*(it + 1) < * it)
             std::iter_swap(it, it + 1);
     }
+    std::cout << "Vector after pairAndSort: ";
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
 }
 
 std::vector<int>::iterator PmergeMe::prev(std::vector<int>::iterator it, int n) {
@@ -47,28 +76,34 @@ void PmergeMe::recursiveSortPairsByMax(std::vector<int>& vec, int left, int righ
 
     while (i <= mid && j <= right) {
         if (vec[2 * i + 1] <= vec[2 * j + 1]) {
+            temp.push_back(vec[2 * i]);
             temp.push_back(vec[2 * i + 1]);
             i++;
         } else {
+            temp.push_back(vec[2 * j]);
             temp.push_back(vec[2 * j + 1]);
             j++;
         }
     }
 
     while (i <= mid) {
+        temp.push_back(vec[2 * i]);
         temp.push_back(vec[2 * i + 1]);
         i++;
     }
 
     while (j <= right) {
+        temp.push_back(vec[2 * j]);
         temp.push_back(vec[2 * j + 1]);
         j++;
     }
 
     for (int k = left; k <= right; ++k) {
-        vec[2 * k + 1] = temp[k - left];
+        vec[2 * k] = temp[2 * (k - left)];
+        vec[2 * k + 1] = temp[2 * (k - left) + 1];
     }
 }
+
 
 void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>& main_chain, std::vector<int>& pend) {
     int size = vec.size();
