@@ -7,36 +7,11 @@ void PmergeMe::sortVector(std::vector<int>& vec) {
     if (vec.size() > 1) {
         pairAndSort(vec);
         recursiveSortPairsByMax(vec, 0, vec.size() / 2 - 1);
-        std::cout << "Vector after recursiveSortPairsByMax: ";
-        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         std::vector<int> main_chain;
         std::vector<int> pend;
         splitIntoMainChainAndPend(vec, main_chain, pend);
-        std::cout << "Main chain: ";
-        for (std::vector<int>::iterator it = main_chain.begin(); it != main_chain.end(); it++) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "Pend: ";
-        for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); it++) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         insertPendElements(main_chain, pend);
-        std::cout << "Main chain after insertPendElements: ";
-        for (std::vector<int>::iterator it = main_chain.begin(); it != main_chain.end(); it++) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         std::copy(main_chain.begin(), main_chain.end(), vec.begin());
-        std::cout << "Vector after sortVector: ";
-        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
     }
 }
 
@@ -49,11 +24,6 @@ void PmergeMe::pairAndSort(std::vector<int>& vec) {
         if (*(it + 1) < * it)
             std::iter_swap(it, it + 1);
     }
-    std::cout << "Vector after pairAndSort: ";
-    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
 }
 
 std::vector<int>::iterator PmergeMe::prev(std::vector<int>::iterator it, int n) {
@@ -122,14 +92,7 @@ void PmergeMe::splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>
 
 void PmergeMe::insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
-    std::cout << "Jacobsthal sequence: ";
-    for (std::vector<int>::iterator it = jacobsthal.begin(); it != jacobsthal.end(); it++) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-    
     main_chain.insert(main_chain.begin(), pend[0]);
-
     for (size_t idx = 1; idx < pend.size(); ++idx) {
         size_t j = jacobsthal[idx] - 1;
         j = std::min(j, pend.size() - 1);
