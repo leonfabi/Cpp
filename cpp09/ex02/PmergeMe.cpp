@@ -6,10 +6,30 @@ PmergeMe::~PmergeMe() {}
 void PmergeMe::sortVector(std::vector<int>& vec) {
     if (vec.size() > 1) {
         pairAndSort(vec);
+        std::cout << "VECTOR After pairAndSort: ";
+        for (size_t i = 0; i < vec.size(); i++) {
+            std::cout << vec[i] << " ";
+        }
+        std::cout << std::endl;
         recursiveSortPairsByMax(vec, 0, vec.size() / 2 - 1);
+        std::cout << "VECTOR After recursiveSortPairsByMax: ";
+        for (size_t i = 0; i < vec.size(); i++) {
+            std::cout << vec[i] << " ";
+        }
+        std::cout << std::endl;
         std::vector<int> main_chain;
         std::vector<int> pend;
         splitIntoMainChainAndPend(vec, main_chain, pend);
+        std::cout << "VECTOR: After splitIntoMainChainAndPend: Main: ";
+        for (size_t i = 0; i < main_chain.size(); i++) {
+            std::cout << main_chain[i] << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "VECTOR: Pend: ";
+        for (size_t i = 0; i < pend.size(); i++) {
+            std::cout << pend[i] << " ";
+        }
+        std::cout << std::endl;
         insertPendElements(main_chain, pend);
         std::copy(main_chain.begin(), main_chain.end(), vec.begin());
     }
@@ -19,7 +39,6 @@ void PmergeMe::pairAndSort(std::vector<int>& vec) {
     int size = vec.size();
     bool has_stray = (size % 2 != 0);
 
-    // std::vector<int>::iterator end = has_stray ? prev(vec.end(), 1) : vec.end();
     std::vector<int>::iterator end = has_stray ? vec.end() - 1 : vec.end();
     for (std::vector<int>::iterator it = vec.begin(); it != end; it += 2) {
         if (*(it + 1) < * it)
@@ -117,14 +136,14 @@ void PmergeMe::sortList(std::list<int>& lst) {
     if (lst.size() > 1) {
         pairAndSort(lst);
         std::list<int>::iterator it = lst.begin();
-        std::cout << "After pairAndSort: ";
+        std::cout << "LIST After pairAndSort: ";
         for (; it != lst.end(); ++it) {
             std::cout << *it << " ";
         }
         std::cout << std::endl;
         recursiveSortPairsByMax(lst);
         it = lst.begin();
-        std::cout << "After recursiveSortPairsByMax: ";
+        std::cout << "LIST After recursiveSortPairsByMax: ";
         for (; it != lst.end(); ++it) {
             std::cout << *it << " ";
         }
@@ -133,13 +152,13 @@ void PmergeMe::sortList(std::list<int>& lst) {
         std::list<int> pend;
         splitIntoMainChainAndPend(lst, main_chain, pend);
         it = main_chain.begin();
-        std::cout << "After splitIntoMainChainAndPend: ";
+        std::cout << "LIST: After splitIntoMainChainAndPend: Main: ";
         for (; it != main_chain.end(); ++it) {
             std::cout << *it << " ";
         }
         std::cout << std::endl;
         it = pend.begin();
-        std::cout << "Pend: ";
+        std::cout << "LIST: Pend: ";
         for (; it != pend.end(); ++it) {
             std::cout << *it << " ";
         }
@@ -149,7 +168,6 @@ void PmergeMe::sortList(std::list<int>& lst) {
     }
 }
 
-// Pair and sort for lists
 void PmergeMe::pairAndSort(std::list<int>& lst) {
     std::list<int>::iterator it = lst.begin();
     while (it != lst.end()) {
@@ -164,78 +182,50 @@ void PmergeMe::pairAndSort(std::list<int>& lst) {
     }
 }
 
-void PmergeMe::recursiveSortPairsByMax(std::list<int>& lst) {
-    if (lst.size() <= 2) return;
-
-    // Split the list into two halves
-    std::list<int> first_half, second_half;
-    std::list<int>::iterator it = lst.begin();
-    std::advance(it, lst.size() / 2);
-
-    first_half.splice(first_half.begin(), lst, lst.begin(), it);
-    second_half.splice(second_half.begin(), lst, lst.begin(), lst.end());
-
-    // Recursively sort each half
-    recursiveSortPairsByMax(first_half);
-    recursiveSortPairsByMax(second_half);
-
-    // Merge the two halves based on the second element of each pair
-    lst.clear();
-    std::list<int>::iterator it1 = first_half.begin();
-    std::list<int>::iterator it2 = second_half.begin();
-
-    // Merge sorted pairs based on the second element
-    while (it1 != first_half.end() && it2 != second_half.end()) {
-        std::list<int>::iterator it1_next = it1;
-        std::advance(it1_next, 1);
-        std::list<int>::iterator it2_next = it2;
-        std::advance(it2_next, 1);
-
-        if (it1_next == first_half.end() || it2_next == second_half.end()) {
-            break;
-        }
-
-        if (*it1_next <= *it2_next) {
-            lst.push_back(*it1);
-            lst.push_back(*it1_next);
-            std::advance(it1, 2);
-        } else {
-            lst.push_back(*it2);
-            lst.push_back(*it2_next);
-            std::advance(it2, 2);
-        }
+void PmergeMe::sortPairs(std::list<int>& lst, std::list<int>::iterator start, std::list<int>::iterator end) {
+    if (start == end || std::distance(start, end) <= 2) {
+        return;
     }
 
-    // Append remaining pairs from first_half
-    while (it1 != first_half.end()) {
-        std::list<int>::iterator it1_next = it1;
-        std::advance(it1_next, 1);
-        if (it1_next != first_half.end()) {
-            lst.push_back(*it1);
-            lst.push_back(*it1_next);
-            std::advance(it1, 2);
-        } else {
-            lst.push_back(*it1);
-            std::advance(it1, 1);
-        }
-    }
+    std::list<int>::iterator next = start;
+    std::advance(next, 2);
+    sortPairs(lst, next, end);
 
-    // Append remaining pairs from second_half
-    while (it2 != second_half.end()) {
-        std::list<int>::iterator it2_next = it2;
-        std::advance(it2_next, 1);
-        if (it2_next != second_half.end()) {
-            lst.push_back(*it2);
-            lst.push_back(*it2_next);
-            std::advance(it2, 2);
-        } else {
-            lst.push_back(*it2);
-            std::advance(it2, 1);
+    if (next != end) {
+        std::list<int>::iterator nextNext = next;
+        std::advance(nextNext, 2);
+
+        int first1 = *start;
+        int second1 = *(++start);
+        --start;
+
+        int first2 = *next;
+        int second2 = *(++next);
+        --next;
+
+        if (second1 > second2) {
+            *start = first2;
+            *(++start) = second2;
+            --start;
+
+            *next = first1;
+            *(++next) = second1;
+            --next;
         }
     }
 }
 
-// Split into main chain and pend for lists
+void PmergeMe::recursiveSortPairsByMax(std::list<int>& lst) {
+    if (lst.size() < 2) {
+        return;
+    }
+    std::list<int>::iterator end = lst.end();
+    if (lst.size() % 2 != 0) {
+        --end;
+    }
+    sortPairs(lst, lst.begin(), end);
+}
+
 void PmergeMe::splitIntoMainChainAndPend(std::list<int>& lst, std::list<int>& main_chain, std::list<int>& pend) {
     bool has_stray = (lst.size() % 2 != 0);
     std::list<int>::iterator it = lst.begin();
@@ -257,8 +247,8 @@ void PmergeMe::splitIntoMainChainAndPend(std::list<int>& lst, std::list<int>& ma
 void PmergeMe::insertPendElements(std::list<int>& main_chain, std::list<int>& pend) {
     std::vector<int> jacobsthal = generateJacobsthalSequence(pend.size());
     std::list<int>::iterator pend_it = pend.begin();
-    main_chain.push_front(*pend_it);  // Insert the first element
-    ++pend_it;  // Move to the next element in pend
+    main_chain.push_front(*pend_it);
+    ++pend_it;
 
     for (size_t idx = 1; idx < pend.size(); ++idx) {
         size_t j = jacobsthal[idx] - 1;
@@ -273,7 +263,7 @@ void PmergeMe::insertPendElements(std::list<int>& main_chain, std::list<int>& pe
             }
             main_chain.insert(it, *pend_it);
             ++pend_it;
-            if (pend_it == pend.end()) break;  // Break if we have inserted all elements
+            if (pend_it == pend.end()) break;
             if (j == 0) break;
             --j;
         }

@@ -25,6 +25,7 @@ class PmergeMe {
         void splitIntoMainChainAndPend(std::vector<int>& vec, std::vector<int>& main_chain, std::vector<int>& pend);
         void insertPendElements(std::vector<int>& main_chain, std::vector<int>& pend);
         void pairAndSort(std::list<int>& lst);
+        void sortPairs(std::list<int>& lst, std::list<int>::iterator it, std::list<int>::iterator end);
         void recursiveSortPairsByMax(std::list<int>& lst);
         void splitIntoMainChainAndPend(std::list<int>& lst, std::list<int>& main_chain, std::list<int>& pend);
         void insertPendElements(std::list<int>& main_chain, std::list<int>& pend);
