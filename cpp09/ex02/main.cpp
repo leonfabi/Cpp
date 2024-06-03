@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>& list) {
+bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::deque<int>& deque) {
     for (int i = 1; i < argc; i++) {
         errno = 0;
         char* endptr;
@@ -22,7 +22,7 @@ bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>
             return false;
         }
         vector.push_back(static_cast<int>(long_value));
-        list.push_back(static_cast<int>(long_value));
+        deque.push_back(static_cast<int>(long_value));
     }
     return true;
 }
@@ -35,8 +35,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     std::vector<int> vector;
-    std::list<int> list;
-    if (parseInput(argc, argv, vector, list) == false)
+    std::deque<int> deque;
+    if (parseInput(argc, argv, vector, deque) == false)
         return 1;
     PmergeMe sorter;
 
@@ -45,10 +45,10 @@ int main(int argc, char* argv[]) {
     clock_t end_vec = clock();
     double elapsed_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1e6;
 
-    clock_t start_list = clock();
-    sorter.sortList(list);
-    clock_t end_list = clock();
-    double elapsed_list = static_cast<double>(end_list - start_list) / CLOCKS_PER_SEC * 1e6;
+    clock_t start_deque = clock();
+    sorter.sortDeque(deque);
+    clock_t end_deque = clock();
+    double elapsed_deque = static_cast<double>(end_deque - start_deque) / CLOCKS_PER_SEC * 1e6;
 
     std::cout << "Before: ";
     for (int i = 1; i < argc && i < display + 1; i++)
@@ -64,14 +64,13 @@ int main(int argc, char* argv[]) {
         std::cout << "[...]";
     std::cout << std::endl;
 
-    std::cout << "After (list)  : ";
-    std::list<int>::iterator it = list.begin();
-    for (int i = 0; i < static_cast<int>(list.size()) && i < display; i++, it++)
-        std::cout << *it << " ";
-    if (list.size() > static_cast<size_t>(display))
+    std::cout << "After (deque)  : ";
+    for (int i = 0; i < static_cast<int>(deque.size()) && i < display; i++)
+        std::cout << deque[i] << " ";
+    if (deque.size() > static_cast<size_t>(display))
         std::cout << "[...]";
     std::cout << std::endl;
 
     std::cout << "Time to process " << vector.size() << " elements with std::vector: " << elapsed_vec << " us\n";
-    std::cout << "Time to process " << list.size() << " elements with std::list: " << elapsed_list << " us\n";
+    std::cout << "Time to process " << deque.size() << " elements with std::deque: " << elapsed_deque << " us\n";
 }
