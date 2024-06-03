@@ -5,9 +5,17 @@ bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>
         errno = 0;
         char* endptr;
         long int long_value = std::strtol(argv[i], &endptr, 10);
-        if (errno != 0) {
+
+        if (errno != 0 || endptr == argv[i]) {
             std::cout << "Invalid input: " << argv[i] << "\n";
             return false;
+        }
+        while (*endptr != '\0') {
+            if (!isspace(*endptr)) {
+                std::cout << "Invalid input. Don't put several values in one argument: \"" << argv[i] << "\"\n";
+                return false;
+            }
+            ++endptr;
         }
         if (long_value <= 0 || long_value > INT_MAX) {
             std::cout << "Value out of range: " << argv[i] << "\n";
@@ -18,6 +26,7 @@ bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>
     }
     return true;
 }
+
 
 int main(int argc, char* argv[]) {
     int display = 10;
