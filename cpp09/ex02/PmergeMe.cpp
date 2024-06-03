@@ -6,30 +6,10 @@ PmergeMe::~PmergeMe() {}
 void PmergeMe::sortVector(std::vector<int>& vec) {
     if (vec.size() > 1) {
         pairAndSort(vec);
-        std::cout << "VECTOR After pairAndSort: ";
-        for (size_t i = 0; i < vec.size(); i++) {
-            std::cout << vec[i] << " ";
-        }
-        std::cout << std::endl;
         recursiveSortPairsByMax(vec, 0, vec.size() / 2 - 1);
-        std::cout << "VECTOR After recursiveSortPairsByMax: ";
-        for (size_t i = 0; i < vec.size(); i++) {
-            std::cout << vec[i] << " ";
-        }
-        std::cout << std::endl;
         std::vector<int> main_chain;
         std::vector<int> pend;
         splitIntoMainChainAndPend(vec, main_chain, pend);
-        std::cout << "VECTOR: After splitIntoMainChainAndPend: Main: ";
-        for (size_t i = 0; i < main_chain.size(); i++) {
-            std::cout << main_chain[i] << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "VECTOR: Pend: ";
-        for (size_t i = 0; i < pend.size(); i++) {
-            std::cout << pend[i] << " ";
-        }
-        std::cout << std::endl;
         insertPendElements(main_chain, pend);
         std::copy(main_chain.begin(), main_chain.end(), vec.begin());
     }
@@ -136,33 +116,13 @@ void PmergeMe::sortList(std::list<int>& lst) {
     if (lst.size() > 1) {
         pairAndSort(lst);
         std::list<int>::iterator it = lst.begin();
-        std::cout << "LIST After pairAndSort: ";
-        for (; it != lst.end(); ++it) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         recursiveSortPairsByMax(lst);
         it = lst.begin();
-        std::cout << "LIST After recursiveSortPairsByMax: ";
-        for (; it != lst.end(); ++it) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         std::list<int> main_chain;
         std::list<int> pend;
         splitIntoMainChainAndPend(lst, main_chain, pend);
         it = main_chain.begin();
-        std::cout << "LIST: After splitIntoMainChainAndPend: Main: ";
-        for (; it != main_chain.end(); ++it) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         it = pend.begin();
-        std::cout << "LIST: Pend: ";
-        for (; it != pend.end(); ++it) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
         insertPendElements(main_chain, pend);
         lst = main_chain;
     }

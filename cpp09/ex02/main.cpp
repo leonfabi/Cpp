@@ -22,7 +22,7 @@ bool parseInput(int argc, char* argv[], std::vector<int>& vector, std::list<int>
 int main(int argc, char* argv[]) {
     int display = 10;
     if (argc < 2) {
-        std::cout << "No Input provvided \n";
+        std::cout << "No Input provided\n Correct use: ./PmergeMe <list of positive integers> \n";
         return 1;
     }
     std::vector<int> vector;
@@ -63,6 +63,6 @@ int main(int argc, char* argv[]) {
         std::cout << "[...]";
     std::cout << std::endl;
 
-    std::cout << "Time to process with std::vector: " << elapsed_vec << " us\n";
-    std::cout << "Time to process with std::list: " << elapsed_list << " us\n";
+    std::cout << "Time to process " << vector.size() << " elements with std::vector: " << elapsed_vec << " us\n";
+    std::cout << "Time to process " << list.size() << " elements with std::list: " << elapsed_list << " us\n";
 }
